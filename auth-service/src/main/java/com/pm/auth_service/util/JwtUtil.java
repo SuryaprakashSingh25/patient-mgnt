@@ -34,14 +34,14 @@ public class JwtUtil {
                 .compact();
     }
 
-    public void validateToken(String token){
-        try{
+    public void validateToken(String token) {
+        try {
             Jwts.parser().verifyWith((SecretKey) secretKey)
                     .build()
                     .parseSignedClaims(token);
-        } catch(SignatureException e){
+        } catch (SignatureException e) {
             throw new JwtException("Invalid JWT signature");
-        } catch (JwtException e){
+        } catch (JwtException e) {
             throw new JwtException("Invalid JWT");
         }
     }
